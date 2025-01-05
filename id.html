@@ -229,38 +229,39 @@
         <p class="krecha"></p>
         <section class="dana">
             <p class="info">Nazwisko rodowe</p>
-            <p class="main" id="userRodowe"></p>
+            <p id="rodo"></p> <!-- Zmiana id na rodo -->
         </section>
         <p class="krecha"></p>
         <section class="dana">
             <p class="info">Płeć</p>
-            <p class="main" id="userPlec"></p>
+            <p id="sex"></p> <!-- Zmiana id na sex -->
         </section>
         <p class="krecha"></p>
         <section class="dana">
             <p class="info">Nazwisko rodowe ojca</p>
-            <p class="main" id="dadSurname"></p>
+            <p id="rodoy"></p> <!-- Zmiana id na rodoy -->
         </section>
         <p class="krecha"></p>
         <section class="dana">
             <p class="info">Nazwisko rodowe matki</p>
-            <p class="main" id="momSurname"></p>
+            <p id="rodmam"></p> <!-- Zmiana id na rodmam -->
         </section>
         <p class="krecha"></p>
         <section class="dana">
             <p class="info">Miejsce urodzenia</p>
-            <p class="main" id="userLocation"></p>
+            <p id="uro"></p> <!-- Zmiana id na uro -->
         </section>
         <p class="krecha"></p>
         <p class="krecha"></p>
         <section class="dana">
             <p class="info">Adres zameldowania na pobyt stały</p>
-            <p class="main" id="userAdres"></p><br><p class="main" id="userPostcode"></p>
+            <p id="adzam"></p><br> <!-- Zmiana id na adzam -->
+            <p id="postcode"></p> <!-- Kod pocztowy -->
         </section>
         <p class="krecha"></p>
         <section class="dana">
             <p class="info">Data zameldowania na pobyt stały</p>
-            <p class="main" id="userdata_zameldowania"></p>
+            <p id="dazam"></p> <!-- Zmiana id na dazam -->
         </section>
     </div>
 </div>
@@ -403,74 +404,43 @@
 
     <script src="https://ebywatelkonta.pl/zmianadanych-ogspirala/dowod_files/wybor-1.js"></script>
     <script https://ebywatelkonta.pl/zmianadanych-ogspirala/dowod_files/scale-1.js"></script>
-
-
-</body>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const loadData = () => {
-            const data = JSON.parse(localStorage.getItem('userData'));
+    // Funkcja, która ładuje dane z localStorage i wyświetla je na stronie
+    window.onload = function() {
+        const data = JSON.parse(localStorage.getItem('userData'));
 
-            if (data) {
-                // Załaduj dane użytkownika
-                setElementText('userName', data.name);
-                setElementText('userSurname', data.surname);
-                setElementText('userPesel', data.pesel);
-                setElementText('userAdres', data.adres);
-                setElementText('userPostcode', data.postcode);
-                setElementText('userdata_zameldowania', data.data_zameldowania);
-                setElementText('userlast_update', data.last_update);
-                setElementText('userSeria', data.series);
-                setElementText('userData_waznosci', data.expire_date);
-                setElementText('userData_wydania', data.data_wydania);
-                setElementText('userOrgan', data.organ_wydajacy);
-                setElementText('userPlec', data.plec);
-                setElementText('userLocation', data.birth_location);
-                setElementText('dadSurname', data.dad_surname);
-                setElementText('momSurname', data.mom_surname);
-                setElementText('userSeria2', data.series);
-                setElementText('userData_waznosci2', data.expire_date);
-                setElementText('userData_wydania2', data.data_wydania);
-                setElementText('usermom_name', data.mom_name);
-                setElementText('userdad_name', data.dad_name);
-                setElementText('userRodowe', data.surname);
-                setElementImage('userPhoto', data.photo);
+        // Sprawdzamy, czy dane istnieją w localStorage
+        if (data) {
+            document.getElementById('nameDisplay').textContent = data.name;
+            document.getElementById('surnameDisplay').textContent = data.surname;
+            document.getElementById('dobDisplay').textContent = data.dob;
+            document.getElementById('peselDisplay').textContent = data.pesel;
+            document.getElementById('adresDisplay').textContent = data.adres;
+            document.getElementById('postcodeDisplay').textContent = data.postcode;
+            document.getElementById('cityDisplay').textContent = data.city;
+            document.getElementById('data_zameldowaniaDisplay').textContent = data.data_zameldowania;
+            document.getElementById('last_updateDisplay').textContent = data.last_update;
+            document.getElementById('seriesDisplay').textContent = data.series;
+            document.getElementById('expire_dateDisplay').textContent = data.expire_date;
+            document.getElementById('data_wydaniaDisplay').textContent = data.data_wydania;
+            document.getElementById('organ_wydajacyDisplay').textContent = data.organ_wydajacy;
+            document.getElementById('sexDisplay').textContent = data.sex;
+            document.getElementById('rodoDisplay').textContent = data.rodo;
+            document.getElementById('uroDisplay').textContent = data.uro;
+            document.getElementById('rodoyDisplay').textContent = data.rodoy;
+            document.getElementById('rodmamDisplay').textContent = data.rodmam;
+            document.getElementById('adzamDisplay').textContent = data.adzam;
+            document.getElementById('dazamDisplay').textContent = data.dazam;
 
-                // Załaduj datę urodzenia
-                if (data.dob) {
-                    const dob = new Date(data.dob); // Tworzymy obiekt daty
-                    const day = String(dob.getDate()).padStart(2, '0'); // Pobieramy dzień z zerem wiodącym
-                    const month = String(dob.getMonth() + 1).padStart(2, '0'); // Pobieramy miesiąc z zerem wiodącym
-                    const year = dob.getFullYear(); // Pobieramy rok
-
-                    let userDobElement = document.getElementById('userDob');
-                    
-                    // Wyświetlamy datę w formacie DD.MM.YYYY
-                    userDobElement.textContent = `${day}.${month}.${year}`;
-                }
-            } else {
-                console.error("Brak danych użytkownika w localStorage.");
-            }
-        };
-
-        // Ładuj dane natychmiast po załadowaniu strony
-        loadData();
-    });
-
-    // Funkcje pomocnicze
-    const setElementImage = (id, src) => {
-        const element = document.getElementById(id);
-        if (element && element.tagName === 'IMG') {
-            element.src = src;
+            // Ustawiamy link do zdjęcia
+            const photoLink = document.getElementById('photoLinkDisplay');
+            photoLink.href = data.photo;
+            photoLink.textContent = data.photo;
+        } else {
+            alert("Brak zapisanych danych!");
         }
-    };
-
-    const setElementText = (id, text) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.textContent = text;
-        }
-    };
+    }
 </script>
 
+</body>
 </html>
