@@ -94,25 +94,34 @@
     <label for="organ_wydajacy">ORGAN WYDAJĄCY:</label>
     <input type="text" id="organ_wydajacy" placeholder="PREZYDENT MIASTA ......" required>
 
-    <label for="plec">Płeć:</label>
-    <input type="text" id="plec" placeholder="Kobieta/Mężczyzna" required>
+    <!-- Zmienione ID na sex -->
+    <label for="sex">Płeć:</label>
+    <input type="text" id="sex" placeholder="Kobieta/Mężczyzna" required>
 
-    <label for="birth_location">MIEJSCE URODZENIA:</label>
-    <input type="text" id="birth_location" required>
+    <!-- Zmienione ID na rodo -->
+    <label for="rodo">NAZWISKO RODOWE:</label>
+    <input type="text" id="rodo" required>
 
-    <label for="dad_surname">NAZWISKO RODOWE OJCA:</label>
-    <input type="text" id="dad_surname" required>
+    <!-- Zmienione ID na uro -->
+    <label for="uro">MIEJSCE URODZENIA:</label>
+    <input type="text" id="uro" required>
 
-    <label for="mom_surname">NAZWISKO RODOWE MATKI:</label>
-    <input type="text" id="mom_surname" required>
+    <!-- Zmienione ID na rodoy -->
+    <label for="rodoy">NAZWISKO RODOWE OJCA:</label>
+    <input type="text" id="rodoy" required>
 
-    <label for="mom_name">IMIĘ MATKI:</label>
-    <input type="text" id="mom_name" required>
+    <!-- Zmienione ID na rodmam -->
+    <label for="rodmam">NAZWISKO RODOWE MATKI:</label>
+    <input type="text" id="rodmam" required>
 
-    <label for="dad_name">IMIĘ OJCA:</label>
-    <input type="text" id="dad_name" required>
+    <!-- Zmienione ID na adzam -->
+    <label for="adzam">ADRES ZAMELDOWANIA:</label>
+    <input type="text" id="adzam" required>
 
-    <!-- Link do zdjęcia -->
+    <!-- Zmienione ID na dazam -->
+    <label for="dazam">DATA ZAMELDOWANIA:</label>
+    <input type="date" id="dazam" required>
+
     <label for="photoLink">Link do zdjęcia:</label>
     <input type="text" id="photoLink" placeholder="Wprowadź link do zdjęcia" required>
 
@@ -140,13 +149,15 @@
             expire_date: document.getElementById('expire_date').value,
             data_wydania: document.getElementById('data_wydania').value,
             organ_wydajacy: document.getElementById('organ_wydajacy').value,
-            plec: document.getElementById('plec').value,
-            birth_location: document.getElementById('birth_location').value,
-            dad_surname: document.getElementById('dad_surname').value,
-            mom_surname: document.getElementById('mom_surname').value,
-            dad_name: document.getElementById('dad_name').value,
-            mom_name: document.getElementById('mom_name').value,
-            // Pobieramy link do zdjęcia
+            // Zmienione ID
+            sex: document.getElementById('sex').value,
+            rodo: document.getElementById('rodo').value,
+            uro: document.getElementById('uro').value,
+            rodoy: document.getElementById('rodoy').value,
+            rodmam: document.getElementById('rodmam').value,
+            adzam: document.getElementById('adzam').value,
+            dazam: document.getElementById('dazam').value,
+            // Link do zdjęcia
             photo: document.getElementById('photoLink').value
         };
 
